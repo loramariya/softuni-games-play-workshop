@@ -1,11 +1,17 @@
+import Header from './components/header/Header'
+import Home from './components/home/Home'
+
 import './App.css'
 
 function App() {
 
   return (
     <div id="box">
-      
-     <h1>hello</h1>
+        <Header/>
+
+        <main id="main-content">
+          <Home/>
+        </main>
     </div>
   )
 }
