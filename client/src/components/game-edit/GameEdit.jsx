@@ -3,39 +3,47 @@ import { useNavigate, useParams } from "react-router";
 import gameService from "../../services/gameService";
 
 export default function GameEdit() {
-  const navigate = useNavigate();
-  const {gameId} = useParams();
-  const [game, setGame] = useState({}); 
+    const navigate = useNavigate();
+    const { gameId } = useParams();
+    const [game, setGame] = useState({});
 
-  useEffect(() => {
+    useEffect(() => {
       gameService.getOne(gameId)
-      .then(setGame);
-  }, [gameId]);
+        .then(setGame);
+    }, [gameId]);
 
-  return (
-    <section id="edit-page" className="auth">
-            <form id="edit">
-                <div className="container">
+    const formAction = async (formData) => {
+        const gameData = Object.fromEntries(formData);
 
-                    <h1>Edit Game</h1>
-                    <label htmlFor="leg-title">Legendary title:</label>
-                    <input type="text" id="title" name="title" defaultValue={game.title} />
+        await gameService.edit(gameId, gameData);
 
-                    <label htmlFor="category">Category:</label>
-                    <input type="text" id="category" name="category" defaultValue={game.category} />
+        navigate(`/games/${gameId}/details`);
+    };
 
-                    <label htmlFor="levels">MaxLevel:</label>
-                    <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={game.maxLevel} />
+    return (
+      <section id="edit-page" className="auth">
+        <form id="edit" action={formAction}>
+          <div className="container">
 
-                    <label htmlFor="game-img">Image:</label>
-                    <input type="text" id="imageUrl" name="imageUrl" defaultValue={game.imageUrl} />
+            <h1>Edit Game</h1>
+            <label htmlFor="leg-title">Legendary title:</label>
+            <input type="text" id="title" name="title" defaultValue={game.title} />
 
-                    <label htmlFor="summary">Summary:</label>
-                    <textarea name="summary" id="summary" defaultValue={game.summary}></textarea>
-                    <input className="btn submit" type="submit" value="Edit Game" />
+            <label htmlFor="category">Category:</label>
+            <input type="text" id="category" name="category" defaultValue={game.category} />
 
-                </div>
-            </form>
-        </section>
-  );
+            <label htmlFor="levels">MaxLevel:</label>
+            <input type="number" id="maxLevel" name="maxLevel" min="1" defaultValue={game.maxLevel} />
+
+            <label htmlFor="game-img">Image:</label>
+            <input type="text" id="imageUrl" name="imageUrl" defaultValue={game.imageUrl} />
+
+            <label htmlFor="summary">Summary:</label>
+            <textarea name="summary" id="summary" defaultValue={game.summary}></textarea>
+            <input className="btn submit" type="submit" value="Edit Game" />
+
+          </div>
+        </form>
+      </section>
+    );
 }
