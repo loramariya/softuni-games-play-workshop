@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router'
+import { Routes, Route } from 'react-router'
 
 import Header from './components/header/Header';
 import Home from './components/home/Home';
@@ -9,24 +9,30 @@ import GameCreate from './components/game-create/GameCreate';
 import GameDetails from './components/game-details/GameDetails';
 import GameEdit from './components/game-edit/GameEdit';
 import './App.css'
+import { useState } from 'react';
 
 function App() {
+  const [email, setEmail] = useState('');
+
+  const userLoginHandler = (email) => {
+    setEmail(email);
+  }
 
   return (
     <div id="box">
-        <Header/>
+      <Header />
 
-        <main id="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/games" element={<GameCatalog />} />
-            <Route path="/games/create" element={<GameCreate />} />
-            <Route path="/games/:gameId/details" element={<GameDetails />} />
-            <Route path="/games/:gameId/edit" element={<GameEdit />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </main>
+      <main id="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/games" element={<GameCatalog />} />
+          <Route path="/games/create" element={<GameCreate />} />
+          <Route path="/games/:gameId/details" element={<GameDetails />} />
+          <Route path="/games/:gameId/edit" element={<GameEdit />} />
+          <Route path="/login" element={<Login  onLogin={userLoginHandler}/>} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </main>
     </div>
   )
 }
