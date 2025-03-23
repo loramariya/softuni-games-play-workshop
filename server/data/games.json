@@ -1,0 +1,26 @@
+{
+    "de32df51-afc6-42b7-b8ff-2b2d91f84e0b": {
+        "title": "test",
+        "category": "action",
+        "maxLevel": "2",
+        "imageUrl": "https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+        "summary": "fslklksfklskfs",
+        "_id": "de32df51-afc6-42b7-b8ff-2b2d91f84e0b"
+    },
+    "a1b2c3d4-1234-5678-9abc-def012345678": {
+        "title": "Cyber Quest",
+        "category": "sci-fi",
+        "maxLevel": "10",
+        "imageUrl": "https://m.media-amazon.com/images/I/81c4Z7F8lIL.jpg",
+        "summary": "A futuristic action game where players battle rogue AI in a dystopian city.",
+        "_id": "a1b2c3d4-1234-5678-9abc-def012345678"
+    },
+    "e9f8g7h6-4321-8765-ba98-76543210abcd": {
+        "title": "Dragon’s Wrath",
+        "category": "fantasy",
+        "maxLevel": "5",
+        "imageUrl": "https://m.media-amazon.com/images/I/71K8B5Xj0LL.jpg",
+        "summary": "An epic RPG adventure where heroes must slay the dragon threatening the kingdom.",
+        "_id": "e9f8g7h6-4321-8765-ba98-76543210abcd"
+    }
+}
