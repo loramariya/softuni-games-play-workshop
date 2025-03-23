@@ -22,5 +22,13 @@
         "imageUrl": "https://m.media-amazon.com/images/I/71K8B5Xj0LL.jpg",
         "summary": "An epic RPG adventure where heroes must slay the dragon threatening the kingdom.",
         "_id": "e9f8g7h6-4321-8765-ba98-76543210abcd"
+    },
+    "4d4e7d60-f6fd-4273-ba41-bba15c88fa25": {
+        "title": "The Sims 3",
+        "category": "Simulator",
+        "maxLevel": "100",
+        "imageUrl": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSSzrY97TaAfOxLbhHggYQviTRaNc-rWZMIZ7aZO0L6K4T3vkmfd7DKwsf7tw8UYg001w_LbQ",
+        "summary": "The Sims 3 is a 2009 social simulation video game developed by the Redwood Shores studio of Maxis, and published by Electronic Arts. Part of The Sims series, it is the sequel to The Sims 2. It was released on June 2, 2009, for Microsoft Windows, MacOS, and mobile versions.",
+        "_id": "4d4e7d60-f6fd-4273-ba41-bba15c88fa25"
     }
 }
