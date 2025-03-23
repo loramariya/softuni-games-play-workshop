@@ -3,6 +3,7 @@ import commentService from "../../services/commentService";
 export default function CommentsCreate({
     email,
     gameId,
+    onCreate,
 }
 ) {
     const commentAction = async (formData) => {
@@ -10,7 +11,7 @@ export default function CommentsCreate({
 
        const createdComment = await commentService.create(email, gameId, comment);
     
-       console.log(createdComment);
+       onCreate(createdComment);
        
 
     }
