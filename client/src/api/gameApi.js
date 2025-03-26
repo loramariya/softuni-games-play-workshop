@@ -54,3 +54,19 @@ export const useDeleteGame = () => {
 
 
 }
+
+export const useLatestGames = () => {
+    const [latestGames, setLatestGames] = useState([]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: 3,
+        })
+
+        request.get(`${baseUrl}?${searchParams.toString()}`)
+       .then(setLatestGames)
+    }, []);
+
+    return {latestGames};
+}
