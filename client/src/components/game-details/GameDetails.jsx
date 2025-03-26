@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import CommentsShow from "../comments-show/CommentsShow";
 import CommentsCreate from "../comments-create/CommentsCreate";
@@ -8,15 +8,15 @@ import useAuth from "../../hooks/useAuth";
 
 export default function GameDetails() {
     const navigate = useNavigate();
-    const { email } = useAuth();
+    const { email, _id: userId } = useAuth();
     const [comments, setComments] = useState([]);
     const { gameId } = useParams();
-    const {game} = useGame(gameId)
-    const {remove} = useDeleteGame(gameId);
+    const { game } = useGame(gameId)
+    const { remove } = useDeleteGame(gameId);
 
     useEffect(() => {
-           commentService.getAll(gameId)
-        .then(setComments);
+        commentService.getAll(gameId)
+            .then(setComments);
     }, [gameId]);
 
     const gameDeleteClickHandler = async () => {
@@ -31,10 +31,12 @@ export default function GameDetails() {
         navigate('/games');
 
     };
-    
-    const commentCreateHandler =  (newComment) => {
+
+    const commentCreateHandler = (newComment) => {
         setComments(state => [...state, newComment]);
     }
+
+    const isOwner = userId === game._ownerId;
 
     return (
         <section id="game-details">
@@ -52,26 +54,26 @@ export default function GameDetails() {
                     {game.summary}
                 </p>
 
-                <CommentsShow comments={comments}/>
+                <CommentsShow comments={comments} />
 
-
-                {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                <div className="buttons">
-                    <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
-                    <button
-                        onClick={gameDeleteClickHandler}
-                        className="button"
-                    >
-                        Delete
-                    </button>
-                </div>
+                {isOwner && (
+                    <div className="buttons">
+                        <Link to={`/games/${gameId}/edit`} className="button">Edit</Link>
+                        <button
+                            onClick={gameDeleteClickHandler}
+                            className="button"
+                        >
+                            Delete
+                        </button>
+                    </div>
+                )}
             </div>
 
-                <CommentsCreate 
-                email={email}  
+            <CommentsCreate
+                email={email}
                 gameId={gameId}
                 onCreate={commentCreateHandler}
-                />
+            />
 
         </section>
     );
