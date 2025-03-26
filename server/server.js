@@ -1649,7 +1649,39 @@
     			_createdOn: 1616237272948,
     			_updatedOn: 1616237293676
     		}
-    	}
+    	},
+        games: [
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Cyber Quest",
+                "category": "Sci-fi",
+                "maxLevel": "10",
+                "imageUrl": "https://i.ytimg.com/vi/c_F0rxiMRD4/mqdefault.jpg",
+                "summary": "A futuristic action game where players battle rogue AI in a dystopian city.",
+                "_createdOn": 1743004949070,
+                "_id": "54d37c83-0836-4325-b657-19178a807eb7"
+            },
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Dragon's Wrath",
+                "category": "Fantasy",
+                "maxLevel": "5",
+                "imageUrl": "https://cf.geekdo-images.com/32TSNZlfKEMqlkdLl3TUQA__opengraph/img/poYiO6J_jiHSBuHJhgNamvSttqw=/0x0:1988x1044/fit-in/1200x630/filters:strip_icc()/pic2597084.jpg",
+                "summary": "An epic RPG adventure where heroes must slay the dragon threatening the kingdom.",
+                "_createdOn": 1743004984254,
+                "_id": "dd2ff621-d943-4172-95ac-33f31cdf1fca"
+            },
+            {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "The Sims 3",
+                "category": "Simulator",
+                "maxLevel": "100",
+                "imageUrl": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSSzrY97TaAfOxLbhHggYQviTRaNc-rWZMIZ7aZO0L6K4T3vkmfd7DKwsf7tw8UYg001w_LbQ",
+                "summary": "The Sims 3 is a 2009 social simulation video game developed by the Redwood Shores studio of Maxis, and published by Electronic Arts. Part of The Sims series, it is the sequel to The Sims 2. It was released on June 2, 2009, for Microsoft Windows, MacOS, and mobile versions.",
+                "_createdOn": 1743005018096,
+                "_id": "1764f7a4-9231-424a-ab08-172b65b53b10"
+            }
+        ]
     };
     var rules$1 = {
     	users: {
