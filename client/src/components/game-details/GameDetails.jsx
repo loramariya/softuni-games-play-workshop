@@ -38,13 +38,17 @@ export default function GameDetails() {
             gameId,
             comment,
             pending: true,
+            author:{
+                email,
+                
+            }
         };
 
         setOptimisticComments(newOptimisticComment);
 
         const commentResult = await create(gameId, comment);
 
-        addComment(commentResult)
+        addComment({...commentResult, author:{email}})
     }
 
     const isOwner = userId === game._ownerId;
