@@ -24,7 +24,7 @@ export const useComments = (gameId) => {
                 .then(setComments);
     }, [gameId]);
 
-    return { comments };
+    return { comments, setComments };
 }
 
 export const useCreateComment = () => {
@@ -35,7 +35,7 @@ export const useCreateComment = () => {
             gameId,
             comment,
         };
-        
+
         return request.post(baseUrl, commentData );
     }
 
