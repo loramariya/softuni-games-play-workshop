@@ -4,17 +4,20 @@ import CommentsCreate from "../comments-create/CommentsCreate";
 import { useDeleteGame, useGame } from "../../api/gameApi";
 import useAuth from "../../hooks/useAuth";
 import { useComments, useCreateComment } from "../../api/commentApi";
+import { useOptimistic } from "react";
+import { v4 as uuid } from 'uuid'
 
 export default function GameDetails() {
     const navigate = useNavigate();
-    const { email, _id: userId } = useAuth();
+    const { email, userId } = useAuth();
     const { gameId } = useParams();
     const { game } = useGame(gameId)
     const { remove } = useDeleteGame(gameId);
-    const {comments, setComments} = useComments(gameId);
-    const {create} = useCreateComment();
+    const { create } = useCreateComment();
+    const { comments, addComment } = useComments(gameId);
+    const [optimisticComments, setOptimisticComments] = useOptimistic(comments, (state, newComment) => [...state, newComment]);
 
-    
+
     const gameDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${game.title} game?`);
 
@@ -29,9 +32,19 @@ export default function GameDetails() {
     };
 
     const commentCreateHandler = async (comment) => {
-      const newComment = await create(gameId, comment);
+        const newOptimisticComment = {
+            _id: uuid(),
+            _ownerId: userId,
+            gameId,
+            comment,
+            pending: true,
+        };
 
-        setComments(state => [...state,newComment]);
+        setOptimisticComments(newOptimisticComment);
+
+        const commentResult = await create(gameId, comment);
+
+        addComment(commentResult)
     }
 
     const isOwner = userId === game._ownerId;
@@ -52,7 +65,7 @@ export default function GameDetails() {
                     {game.summary}
                 </p>
 
-                <CommentsShow comments={comments} />
+                <CommentsShow comments={optimisticComments} />
 
                 {isOwner && (
                     <div className="buttons">
