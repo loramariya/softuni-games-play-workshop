@@ -3,7 +3,7 @@ import CommentsShow from "../comments-show/CommentsShow";
 import CommentsCreate from "../comments-create/CommentsCreate";
 import { useDeleteGame, useGame } from "../../api/gameApi";
 import useAuth from "../../hooks/useAuth";
-import { useComments } from "../../api/commentApi";
+import { useComments, useCreateComment } from "../../api/commentApi";
 
 export default function GameDetails() {
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ export default function GameDetails() {
     const { game } = useGame(gameId)
     const { remove } = useDeleteGame(gameId);
     const {comments} = useComments(gameId);
+    const {create} = useCreateComment();
 
     
     const gameDeleteClickHandler = async () => {
@@ -27,9 +28,9 @@ export default function GameDetails() {
 
     };
 
-    // const commentCreateHandler = (newComment) => {
-    //     setComments(state => [...state, newComment]);
-    // }
+    const commentCreateHandler = async (comment) => {
+       await create(gameId, comment);
+    }
 
     const isOwner = userId === game._ownerId;
 
@@ -67,7 +68,7 @@ export default function GameDetails() {
             <CommentsCreate
                 email={email}
                 gameId={gameId}
-                // onCreate={commentCreateHandler}
+                onCreate={commentCreateHandler}
             />
 
         </section>

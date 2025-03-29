@@ -26,3 +26,18 @@ export const useComments = (gameId) => {
 
     return { comments };
 }
+
+export const useCreateComment = () => {
+    const { request} = useAuth();
+
+    const create = (gameId, comment) =>  {
+        const commentData = {
+            gameId,
+            comment,
+        };
+        
+        return request.post(baseUrl, commentData );
+    }
+
+    return {create};
+}
