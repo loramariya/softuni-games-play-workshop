@@ -31,7 +31,9 @@ export default function GameDetails() {
 
     };
 
-    const commentCreateHandler = async (comment) => {
+    const commentCreateHandler = async (formData) => {
+        const comment = formData.get('comment');
+
         const newOptimisticComment = {
             _id: uuid(),
             _ownerId: userId,
@@ -40,7 +42,6 @@ export default function GameDetails() {
             pending: true,
             author:{
                 email,
-                
             }
         };
 
